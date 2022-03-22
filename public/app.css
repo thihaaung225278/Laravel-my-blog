@@ -1,0 +1,11 @@
+body {
+    background: orange;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.date {
+    background: gray;
+    padding: 5px 15px;
+    font-weight: bold;
+    color: #fff;
+}
