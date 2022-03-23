@@ -9,3 +9,15 @@ body {
     font-weight: bold;
     color: #fff;
 }
+article {
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+.bg-white {
+    background: #fff;
+    padding: 5px 10px;
+    border: 2px solid #fff;
+}
+.border-white {
+    border: 2px solid #fff;
+}

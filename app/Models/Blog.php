@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -24,16 +25,18 @@ class Blog{
     }
 
     public static function find($slug){
-        // $path = resource_path("blogs/$slug.html");
-        // if(!file_exists($path)){
-        //     return redirect("/");
-        // }
-        // return cache()->remember("posts.$slug", 5, function() use($path){
-        //     return file_get_contents($path);
-        // });
         $blogs = static::all();
         return $blogs->firstWhere("slug", $slug);
 
+    }
+    public static function findOrFail($slug){
+        // $blogs = static::all();
+        // $blog = $blogs->firstWhere("slug", $slug);
+        $blog = static::find($slug);
+        if(!$blog){
+            throw new ModelNotFoundException();
+        }
+        return $blog;
     }
     public static function all(){
         $files = File::files(resource_path("blogs"));

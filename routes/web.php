@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Route::get('/blog/{blog}', function($slug){
 
-    $blog = Blog::find($slug);
+    $blog = Blog::findOrFail($slug);
 
     return view("blog",[
         "blog"  => $blog
